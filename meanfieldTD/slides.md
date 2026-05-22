@@ -1,5 +1,6 @@
 ---
 theme: ../common/themes/neat
+routerMode: hash
 layout: cover
 colorSchema: light
 coverTitle: "On the Convergence of Semi-Gradient TD: A Mean-Field Perspective"
