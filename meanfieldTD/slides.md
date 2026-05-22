@@ -395,6 +395,115 @@ $$\begin{gathered}\hat{y}(x;\boldsymbol{\theta})=\hat{y}(x;\mu_M):=\int \phi(x;\
 
 ---
 layout: section
+subject: Convergence Analysis
+---
+
+# Convergence Analysis
+
+---
+layout: default
+headerEnable: true
+headerTitle: Convergence Analysis
+pageNumber: ture
+---
+
+### Main Results: Policy Evaluation
+
+<div class="theorem-box">
+
+<span class="theorem-label">Theorem 1</span> <span class="theorem-name">(Frozen-target optimality gap decay, informal).</span>
+Under the mixed-smoothness assumption and the stability condition $\rho\tau>L_p$, the one-step frozen-target optimality gap decays exponentially:
+
+$$G(t):=F(q_t,q_t)-F(q_t,\pi_{q_t,*}),\qquad G(t)\leq e^{-2(\rho\tau-L_p)t}G(0).$$
+
+</div>
+
+<div v-click class="theorem-comment">
+
+The semi-gradient dynamics is not analyzed through decrease of a fixed objective.
+Instead, we compare $q_t$ with the instantaneous frozen-target minimizer $\pi_{q_t,*}$.
+
+</div>
+
+---
+layout: default
+headerEnable: true
+headerTitle: Convergence Analysis
+pageNumber: ture
+---
+
+### Stability of the Frozen-target Response
+
+<div class="theorem-box">
+
+<span class="theorem-label">Lemma 1</span> <span class="theorem-name">(Stability of the Gibbs response map, informal).</span>
+Let $T(\mu):=\pi_{\mu,*}(\theta)d\theta$ be the frozen-target Gibbs response map. Then
+
+$$W_2(T(\mu_1),T(\mu_2))\leq \frac{L_p}{\rho\tau}W_2(\mu_1,\mu_2).$$
+
+In particular, if $\rho\tau>L_p$, then $T$ is a contraction.
+
+</div>
+
+<div v-click class="theorem-comment">
+
+This converts the local frozen-target relaxation into stability of the moving target itself.
+
+</div>
+
+---
+layout: default
+headerEnable: true
+headerTitle: Convergence Analysis
+pageNumber: ture
+---
+
+### Convergence to a Self-consistent Equilibrium
+
+<div class="theorem-box">
+
+<span class="theorem-label">Corollary 1</span> <span class="theorem-name">(Convergence to the self-consistent equilibrium, informal).</span>
+Under $\rho\tau>L_p$, there exists a unique self-consistent equilibrium $\pi_*$, and the noisy mean-field semi-gradient TD dynamics converges exponentially:
+
+$$W_2(q_t,\pi_*)\leq \frac{\sqrt{2\rho\tau}}{\rho\tau-L_p}\sqrt{G(0)}e^{-(\rho\tau-L_p)t}.$$
+
+</div>
+
+<div v-click class="theorem-comment">
+
+The same stability condition controls both the frozen-target optimization error and the movement of the target.
+
+</div>
+
+
+
+---
+layout: default
+headerEnable: true
+headerTitle: Convergence Analysis
+pageNumber: ture
+---
+
+### Extension to Soft Q-learning
+
+<div class="theorem-box">
+
+<span class="theorem-label">Proposition 4</span> <span class="theorem-name">(Soft Q-learning convergence, informal).</span>
+For the entropy-regularized off-policy soft Q-learning functional, assume the same Gibbs-form characterization, uniform LSI, and mixed-smoothness estimate with constant $L_p^Q$. If $\rho\tau>L_p^Q$, then the Gibbs response map has a unique fixed point $\pi_*^Q$, and
+
+$$W_2(q_t,\pi_*^Q)\leq \frac{\sqrt{2\rho\tau}}{\rho\tau-L_p^Q}\sqrt{G_Q(0)}e^{-(\rho\tau-L_p^Q)t}.$$
+
+</div>
+
+<div v-click class="theorem-comment">
+
+The same entropy-versus-sensitivity mechanism extends beyond policy evaluation.
+
+</div>
+
+
+---
+layout: section
 subject: Thank you
 hideInToc: true
 ---
