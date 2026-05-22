@@ -11,12 +11,49 @@ lineNumbers: true
 
 
 ---
-maxDepth: 2
 pageNumber: true
 ---
 
 <div style="font-size: 1.2em;">
-  <Toc depth="2" />
+  <Toc minDepth="1" maxDepth="2" />
+</div>
+
+---
+layout: section
+subject: Overview
+---
+
+# Overview
+
+---
+layout: default
+headerEnable: true
+headerTitle: Overview
+pageNumber: true
+---
+
+### Overview
+
+<div style="position: absolute; left: 8%; top: 24%; width: 84%; font-size: 1.05rem; line-height: 1.55;">
+
+<ul>
+  <li v-click>
+    Deep RL is important, but we still do not fully understand its convergence.
+  </li>
+
+  <li v-click style="margin-top: 18px;">
+    Semi-gradient TD is one of the most basic and widely used methods in RL, but its convergence is not guaranteed in general.
+  </li>
+
+  <li v-click style="margin-top: 18px;">
+    Even with linear function approximation, one can construct examples where semi-gradient TD diverges.
+  </li>
+
+  <li v-click style="margin-top: 18px;">
+    In this work, we show that for two-layer neural networks, adding noise can lead to convergence.
+  </li>
+</ul>
+
 </div>
 
 ---
@@ -407,7 +444,7 @@ headerTitle: Convergence Analysis
 pageNumber: true
 ---
 
-### Main Results: Policy Evaluation
+**Frozen-target optimality gap decay**
 
 <div class="theorem-box theorem">
   <div class="theorem-head">
@@ -438,7 +475,7 @@ headerTitle: Convergence Analysis
 pageNumber: true
 ---
 
-### Stability of the Frozen-target Response
+**Stability of the Frozen-target Response**
 
 <div class="theorem-box lemma">
   <div class="theorem-head">
@@ -470,7 +507,7 @@ headerTitle: Convergence Analysis
 pageNumber: true
 ---
 
-### Convergence to a Self-consistent Equilibrium
+**Convergence to a Self-consistent Equilibrium**
 
 <div class="theorem-box corollary">
   <div class="theorem-head">
@@ -500,7 +537,7 @@ headerTitle: Convergence Analysis
 pageNumber: true
 ---
 
-### Extension to Soft Q-learning
+**Extension to Soft Q-learning**
 
 <div class="theorem-box proposition">
   <div class="theorem-head">
@@ -522,6 +559,21 @@ $$W_2(q_t,\pi_*^Q)\leq \frac{\sqrt{2\rho\tau}}{\rho\tau-L_p^Q}\sqrt{G_Q(0)}e^{-(
 The same entropy-versus-sensitivity mechanism extends beyond policy evaluation.
 
 </div>
+
+
+---
+layout: section
+subject: Conclusion
+---
+
+# Conclusion
+
+---
+layout: default
+headerEnable: true
+headerTitle: Conclusion
+pageNumber: true
+---
 
 
 ---
