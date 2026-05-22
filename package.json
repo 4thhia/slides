@@ -1,4 +1,5 @@
 {
-    "scripts":{"dev:meanfieldTD":"slidev meanfieldTD/slides.md","build:meanfieldTD":"slidev build meanfieldTD/slides.md --base /slides/meanfieldTD/ --out dist/meanfieldTD"},
-    "devDependencies":{"@slidev/cli":"latest","vue":"latest"}
+    "scripts":{"dev:meanfieldTD":"slidev meanfieldTD/slides.md",
+    "build:meanfieldTD":"cd meanfieldTD && slidev build slides.md --base /slides/meanfieldTD/ --out ../dist/meanfieldTD"},
+    "devDependencies":{"@slidev/cli":"latest","vue":"latest","prism-theme-vars":"latest","codemirror-theme-vars":"latest"}
 }

@@ -30,7 +30,7 @@ jobs:
 
       - run: mkdir -p dist
 
-      - run: npx slidev build meanfieldTD/slides.md --base /slides/meanfieldTD/ --out dist/meanfieldTD
+      - run: cd meanfieldTD && npx slidev build slides.md --base /slides/meanfieldTD/ --out ../dist/meanfieldTD
 
       - uses: actions/upload-pages-artifact@v3
         with:
