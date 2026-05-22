@@ -158,7 +158,7 @@ pageNumber: true
 
 ::left::
 
-<div style="font-size: 0.82rem; line-height: 1.35; padding-right: 14px; margin-top: 28px;">
+<div style="font-size: 0.92rem; line-height: 1.35; padding-right: 14px; margin-top: 28px;">
 
 <div v-click>
 
@@ -179,10 +179,10 @@ $$L(\theta):=\frac{1}{2}\mathbb{E}_{S}\left[\left(\mathbb{E}_{A,S'}\left[r+\gamm
 </div>
 
   <div v-click>
-    <div style="position: absolute; left: 192px; top: 340px; width: 125px; border-top: 1px solid red">
+    <div style="position: absolute; left: 165px; top: 350px; width: 150px; border-top: 1px solid red">
   </div>
 
-  <div style="position: absolute; left: 195px; top: 345px; font-size: 0.8rem;">
+  <div style="position: absolute; left: 195px; top: 350px; font-size: 0.8rem;">
     Call this term <span style="color: red;">"Target"</span>.
   </div>
 </div>
@@ -222,7 +222,7 @@ $$\begin{aligned}-\nabla_\theta L(\theta)=\mathbb{E}_{S}\bigg[\bigg(\mathbb{E}_{
 
 ::right::
 
-<div style="font-size: 0.82rem; line-height: 1.35; padding-left: 14px; margin-top: 28px;">
+<div style="font-size: 0.92rem; line-height: 1.35; padding-left: 14px; margin-top: 28px;">
 
 
 <div v-click>
@@ -282,7 +282,7 @@ $$\begin{aligned}&\text{Fixed objective}\\ &\qquad\qquad\qquad\text{No such obje
 
 ::right::
 
-<div style="font-size: 0.82rem; line-height: 1.0; padding-left: 14px;">
+<div style="font-size: 0.92rem; line-height: 1.0; padding-left: 10px;">
 
 
 <div v-click>
