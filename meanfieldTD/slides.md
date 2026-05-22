@@ -32,17 +32,19 @@ headerTitle: Overview
 pageNumber: true
 ---
 
-### Overview
+<div class="slide-title-no-toc" style="position: absolute; left: 40px; top: 65px;">
+Overview
+</div>
 
 <div style="position: absolute; left: 8%; top: 24%; width: 84%; font-size: 1.05rem; line-height: 1.55;">
 
 <ul>
   <li v-click>
-    Deep RL is important, but we still do not fully understand its convergence.
+    Deep Reinforcement Learning has attracted much attention as a possible approach to complex sequential decision making.
   </li>
 
   <li v-click style="margin-top: 18px;">
-    Semi-gradient TD is one of the most basic and widely used methods in RL, but its convergence is not guaranteed in general.
+    Semi-gradient TD is one of the most basic components in RL, but its convergence is not guaranteed in general.
   </li>
 
   <li v-click style="margin-top: 18px;">
@@ -55,6 +57,15 @@ pageNumber: true
 </ul>
 
 </div>
+
+<style>
+.slide-title-no-toc {
+  font-family: 'Freesentation';
+  font-weight: 800;
+  font-size: 1.55rem;
+  line-height: 1.2;
+}
+</style>
 
 ---
 layout: section
@@ -123,9 +134,7 @@ headerEnable: true
 headerTitle: Background
 ---
 
-<div class="slide-title-no-toc" style="position: absolute; left: 40px; top: 65px;">
-Example: Computing the Value Function
-</div>
+### Example: Computing the Value Function
 
 <div style="font-size: 0.8em; position: absolute; top: 17%; left: 8% ;">
 
@@ -134,7 +143,7 @@ $$\begin{alignedat}{2}&\text{Definition}&&\text{Bellman Equation}\\ &\quad V^\pi
 </div>
 
 
-<div style="position: absolute; top: 10%; right: 2%; font-size: 0.72rem; line-height: 1.15; padding: 10px 10px 0px 10px; border: 1px solid rgba(120,120,120,0.28); border-radius: 12px; background: rgba(255,255,255,0.55); backdrop-filter: blur(6px);">
+<div style="position: absolute; top: 10%; right: 4%; font-size: 0.72rem; line-height: 1.15; padding: 10px 10px 0px 10px; border: 1px solid rgba(120,120,120,0.28); border-radius: 12px; background: rgba(255,255,255,0.55); backdrop-filter: blur(6px);">
 
 <div style="font-weight: 800; margin-bottom: 4px;">Grid-world setting</div>
 
@@ -161,15 +170,6 @@ $r \equiv 1,\quad \gamma=1$
 
 
 <DpRlGridCompare />
-
-<style>
-.slide-title-no-toc {
-  font-family: 'Freesentation';
-  font-weight: 800;
-  font-size: 1.25rem;
-  line-height: 1.2;
-}
-</style>
 
 ---
 layout: two-cols
@@ -444,12 +444,12 @@ headerTitle: Convergence Analysis
 pageNumber: true
 ---
 
-**Frozen-target optimality gap decay**
+**Policy evaluation**
 
 <div class="theorem-box theorem">
   <div class="theorem-head">
     <span class="theorem-label">Theorem 1</span>
-    <span class="theorem-name">(Frozen-target optimality gap decay, informal).</span>
+    <span class="theorem-name">(Instantaneous optimality gap decay).</span>
   </div>
 
   <div class="theorem-body">
@@ -475,12 +475,12 @@ headerTitle: Convergence Analysis
 pageNumber: true
 ---
 
-**Stability of the Frozen-target Response**
+**Policy evaluation**
 
 <div class="theorem-box lemma">
   <div class="theorem-head">
     <span class="theorem-label">Lemma 1</span>
-    <span class="theorem-name">(Stability of the Gibbs response map, informal).</span>
+    <span class="theorem-name">(Stability of the Gibbs response map).</span>
   </div>
 
   <div class="theorem-body">
@@ -507,12 +507,12 @@ headerTitle: Convergence Analysis
 pageNumber: true
 ---
 
-**Convergence to a Self-consistent Equilibrium**
+**Policy evaluation**
 
 <div class="theorem-box corollary">
   <div class="theorem-head">
     <span class="theorem-label">Corollary 1</span>
-    <span class="theorem-name">(Convergence to a self-consistent equilibrium, informal).</span>
+    <span class="theorem-name">(Convergence to a self-consistent equilibrium).</span>
   </div>
 
   <div class="theorem-body">
@@ -542,7 +542,7 @@ pageNumber: true
 <div class="theorem-box proposition">
   <div class="theorem-head">
     <span class="theorem-label">Proposition 4</span>
-    <span class="theorem-name">(Soft Q-learning convergence, informal).</span>
+    <span class="theorem-name">(Soft Q-learning convergence).</span>
   </div>
 
   <div class="theorem-body">
@@ -568,12 +568,7 @@ subject: Conclusion
 
 # Conclusion
 
----
-layout: default
-headerEnable: true
-headerTitle: Conclusion
-pageNumber: true
----
+
 
 
 ---

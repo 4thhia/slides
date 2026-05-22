@@ -721,7 +721,7 @@ const rlCellClass = (cell) => {
   grid-template-columns: 1fr 1fr;
   gap: 14px;
   width: 100%;
-  margin-top: 175px;
+  margin-top: 130px;
 }
 
 .panel {
