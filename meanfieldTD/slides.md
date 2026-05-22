@@ -404,18 +404,24 @@ subject: Convergence Analysis
 layout: default
 headerEnable: true
 headerTitle: Convergence Analysis
-pageNumber: ture
+pageNumber: true
 ---
 
 ### Main Results: Policy Evaluation
 
-<div class="theorem-box">
+<div class="theorem-box theorem">
+  <div class="theorem-head">
+    <span class="theorem-label">Theorem 1</span>
+    <span class="theorem-name">(Frozen-target optimality gap decay, informal).</span>
+  </div>
 
-<span class="theorem-label">Theorem 1</span> <span class="theorem-name">(Frozen-target optimality gap decay, informal).</span>
+  <div class="theorem-body">
+
 Under the mixed-smoothness assumption and the stability condition $\rho\tau>L_p$, the one-step frozen-target optimality gap decays exponentially:
 
 $$G(t):=F(q_t,q_t)-F(q_t,\pi_{q_t,*}),\qquad G(t)\leq e^{-2(\rho\tau-L_p)t}G(0).$$
 
+  </div>
 </div>
 
 <div v-click class="theorem-comment">
@@ -429,20 +435,26 @@ Instead, we compare $q_t$ with the instantaneous frozen-target minimizer $\pi_{q
 layout: default
 headerEnable: true
 headerTitle: Convergence Analysis
-pageNumber: ture
+pageNumber: true
 ---
 
 ### Stability of the Frozen-target Response
 
-<div class="theorem-box">
+<div class="theorem-box lemma">
+  <div class="theorem-head">
+    <span class="theorem-label">Lemma 1</span>
+    <span class="theorem-name">(Stability of the Gibbs response map, informal).</span>
+  </div>
 
-<span class="theorem-label">Lemma 1</span> <span class="theorem-name">(Stability of the Gibbs response map, informal).</span>
+  <div class="theorem-body">
+
 Let $T(\mu):=\pi_{\mu,*}(\theta)d\theta$ be the frozen-target Gibbs response map. Then
 
 $$W_2(T(\mu_1),T(\mu_2))\leq \frac{L_p}{\rho\tau}W_2(\mu_1,\mu_2).$$
 
 In particular, if $\rho\tau>L_p$, then $T$ is a contraction.
 
+  </div>
 </div>
 
 <div v-click class="theorem-comment">
@@ -455,18 +467,24 @@ This converts the local frozen-target relaxation into stability of the moving ta
 layout: default
 headerEnable: true
 headerTitle: Convergence Analysis
-pageNumber: ture
+pageNumber: true
 ---
 
 ### Convergence to a Self-consistent Equilibrium
 
-<div class="theorem-box">
+<div class="theorem-box corollary">
+  <div class="theorem-head">
+    <span class="theorem-label">Corollary 1</span>
+    <span class="theorem-name">(Convergence to a self-consistent equilibrium, informal).</span>
+  </div>
 
-<span class="theorem-label">Corollary 1</span> <span class="theorem-name">(Convergence to the self-consistent equilibrium, informal).</span>
+  <div class="theorem-body">
+
 Under $\rho\tau>L_p$, there exists a unique self-consistent equilibrium $\pi_*$, and the noisy mean-field semi-gradient TD dynamics converges exponentially:
 
 $$W_2(q_t,\pi_*)\leq \frac{\sqrt{2\rho\tau}}{\rho\tau-L_p}\sqrt{G(0)}e^{-(\rho\tau-L_p)t}.$$
 
+  </div>
 </div>
 
 <div v-click class="theorem-comment">
@@ -475,24 +493,28 @@ The same stability condition controls both the frozen-target optimization error 
 
 </div>
 
-
-
 ---
 layout: default
 headerEnable: true
 headerTitle: Convergence Analysis
-pageNumber: ture
+pageNumber: true
 ---
 
 ### Extension to Soft Q-learning
 
-<div class="theorem-box">
+<div class="theorem-box proposition">
+  <div class="theorem-head">
+    <span class="theorem-label">Proposition 4</span>
+    <span class="theorem-name">(Soft Q-learning convergence, informal).</span>
+  </div>
 
-<span class="theorem-label">Proposition 4</span> <span class="theorem-name">(Soft Q-learning convergence, informal).</span>
+  <div class="theorem-body">
+
 For the entropy-regularized off-policy soft Q-learning functional, assume the same Gibbs-form characterization, uniform LSI, and mixed-smoothness estimate with constant $L_p^Q$. If $\rho\tau>L_p^Q$, then the Gibbs response map has a unique fixed point $\pi_*^Q$, and
 
 $$W_2(q_t,\pi_*^Q)\leq \frac{\sqrt{2\rho\tau}}{\rho\tau-L_p^Q}\sqrt{G_Q(0)}e^{-(\rho\tau-L_p^Q)t}.$$
 
+  </div>
 </div>
 
 <div v-click class="theorem-comment">
