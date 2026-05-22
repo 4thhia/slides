@@ -21,16 +21,18 @@
 <script setup>
 import { computed, ref } from 'vue';
 
+const base = import.meta.env.BASE_URL;
+
 const frames = [
-  '/mdp/step0.png',
-  '/mdp/step1.png',
-  '/mdp/step2.png',
-  '/mdp/step3.png',
-  '/mdp/step4.png',
-  '/mdp/step5.png',
-  '/mdp/step6.png',
-  '/mdp/step7.png',
-  '/mdp/step8.png',
+  `${base}mdp/step0.png`,
+  `${base}mdp/step1.png`,
+  `${base}mdp/step2.png`,
+  `${base}mdp/step3.png`,
+  `${base}mdp/step4.png`,
+  `${base}mdp/step5.png`,
+  `${base}mdp/step6.png`,
+  `${base}mdp/step7.png`,
+  `${base}mdp/step8.png`,
 ];
 
 const step = ref(0);

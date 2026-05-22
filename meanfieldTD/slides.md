@@ -112,7 +112,7 @@ $P$: $\mathrm{Uniform}(\mathcal{S})$ <br>
 $r \equiv 1,\quad \gamma=1$
 
 <div v-click style="position: absolute; left: 5px; top: 83px; width: 95px; height: 54px; z-index: 10;">
-  <img src="/unknown.png" style="width: 100%; height: 100%; display: block;" />
+  <img src="./public/unknown.png" style="width: 100%; height: 100%; display: block;" />
   <div style="position: absolute; left: 0; top: 10px; width: 100%; padding-left: 5px; text-align: left; color: white; font-size: 1.0rem; font-weight: 800; letter-spacing: 0.02em; line-height: 1.05;">
     Unknown in <br>
     RL
@@ -147,12 +147,12 @@ pageNumber: true
 <div style="position: absolute; right: 82px; bottom: -5px; width: 300px; height: 200px;">
   <div v-click.hide style="position: absolute; inset: 0;">
     <div v-click style="position: absolute; inset: 0;">
-      <img src="/mdp/step9.png" style="width: 90%; height: 100%; object-fit: contain; display: block;" />
+      <img src="./public/mdp/step9.png" style="width: 90%; height: 100%; object-fit: contain; display: block;" />
     </div>
   </div>
 
   <div v-after style="position: absolute; inset: 0;">
-    <img src="/mdp/step10.png" style="width: 90%; height: 100%; object-fit: contain; display: block;" />
+    <img src="./public/mdp/step10.png" style="width: 90%; height: 100%; object-fit: contain; display: block;" />
   </div>
 </div>
 
@@ -325,7 +325,7 @@ This is <strong class="danger">one-step optimization + moving target</strong>: o
 
 
 <div v-click>
-  <img src="/greenback.png" style="position: absolute; left: 47.5px; top: 353px; width: 41%; object-fit: contain; display: block;" />
+  <img src="./public/greenback.png" style="position: absolute; left: 47.5px; top: 353px; width: 41%; object-fit: contain; display: block;" />
 
   <MovingTargetFrames />
 
@@ -353,7 +353,7 @@ pageNumber: true
 #### Two-layer neural network
 
 <div v-click.hide>
-<img src="/2layernn/diagram.png" style="position: absolute; left: 10px; top: 130px; width: 45%; object-fit: contain; display: block;" />
+<img src="./public/2layernn/diagram.png" style="position: absolute; left: 10px; top: 130px; width: 45%; object-fit: contain; display: block;" />
 
 <div style="font-size: 0.72rem; position: absolute; left: 170px; top: 245px;">
 
@@ -362,7 +362,7 @@ $$\begin{gathered}\hat{y}(x;\boldsymbol{\theta})=\frac{1}{M}\sum_{i=1}^Ma_i\sigm
 </div>
 </div>
 <div v-after>
-<img src="/2layernn/permutation.png" style="position: absolute; left: 10px; top: 130px; width: 45%; object-fit: contain; display: block;" />
+<img src="./public/2layernn/permutation.png" style="position: absolute; left: 10px; top: 130px; width: 45%; object-fit: contain; display: block;" />
 
 <div style="font-size: 0.72rem; position: absolute; left: 170px; top: 245px;">
 

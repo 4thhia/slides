@@ -21,26 +21,28 @@
 <script setup>
 import { computed, ref } from 'vue';
 
+const base = import.meta.env.BASE_URL;
+
 const frames = [
-  '/moving_target/step00.png',
-  '/moving_target/step01.png',
-  '/moving_target/step02.png',
-  '/moving_target/step03.png',
-  '/moving_target/step04.png',
-  '/moving_target/step05.png',
-  '/moving_target/step06.png',
-  '/moving_target/step07.png',
-  '/moving_target/step08.png',
-  '/moving_target/step09.png',
-  '/moving_target/step10.png',
-  '/moving_target/step11.png',
-  '/moving_target/step12.png',
-  '/moving_target/step13.png',
-  '/moving_target/step14.png',
-  '/moving_target/step15.png',
-  '/moving_target/step16.png',
-  '/moving_target/step17.png',
-  '/moving_target/step18.png',
+  `${base}moving_target/step00.png`,
+  `${base}moving_target/step01.png`,
+  `${base}moving_target/step02.png`,
+  `${base}moving_target/step03.png`,
+  `${base}moving_target/step04.png`,
+  `${base}moving_target/step05.png`,
+  `${base}moving_target/step06.png`,
+  `${base}moving_target/step07.png`,
+  `${base}moving_target/step08.png`,
+  `${base}moving_target/step09.png`,
+  `${base}moving_target/step10.png`,
+  `${base}moving_target/step11.png`,
+  `${base}moving_target/step12.png`,
+  `${base}moving_target/step13.png`,
+  `${base}moving_target/step14.png`,
+  `${base}moving_target/step15.png`,
+  `${base}moving_target/step16.png`,
+  `${base}moving_target/step17.png`,
+  `${base}moving_target/step18.png`,
 ];
 
 const step = ref(0);
