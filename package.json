@@ -1,0 +1,4 @@
+{
+    "scripts":{"dev:meanfieldTD":"slidev meanfieldTD/slides.md","build:meanfieldTD":"slidev build meanfieldTD/slides.md --base /slides/meanfieldTD/ --out dist/meanfieldTD"},
+    "devDependencies":{"@slidev/cli":"latest","vue":"latest"}
+}

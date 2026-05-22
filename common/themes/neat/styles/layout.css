@@ -1,0 +1,170 @@
+@font-face {
+  font-family: 'Freesentation';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-3Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Freesentation';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-4Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Freesentation';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-5Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Freesentation';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-6SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Freesentation';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-7Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Freesentation';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-8ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Freesentation';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --slidev-theme-light-background: white;
+  --slidev-theme-light-text: #222448;
+  --slidev-theme-light-accent: #0060CC;
+  --slidev-theme-light-danger: #C2362B;
+  --slidev-theme-light-divider: #8FA7CA70;
+
+  --slidev-theme-dark-background: #000;
+  --slidev-theme-dark-text: white;
+  --slidev-theme-dark-accent: #40A0FC;
+  --slidev-theme-dark-danger: #E96158;
+  --slidev-theme-dark-divider: #c2c4c8;
+}
+
+#page-root {
+  font-family: 'Freesentation', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 500;
+}
+
+html:not(.dark) {
+  .slidev-layout {
+    background-color: var(--slidev-theme-light-background);
+    color: var(--slidev-theme-light-text);
+
+    a:hover {
+      color: var(--slidev-theme-light-accent);
+    }
+
+    hr {
+      background-color: var(--slidev-theme-light-divider);
+    }
+  }
+
+  strong.danger {
+    color: var(--slidev-theme-light-danger);
+  }
+
+  strong.accent {
+    color: var(--slidev-theme-light-accent);
+  }
+}
+
+html.dark {
+  .slidev-layout {
+    background-color: var(--slidev-theme-dark-background);
+    color: var(--slidev-theme-dark-text);
+
+    a:hover {
+      color: var(--slidev-theme-dark-accent);
+    }
+
+    hr {
+      background-color: var(--slidev-theme-dark-divider);
+    }
+  }
+
+  strong.danger {
+    color: var(--slidev-theme-dark-danger);
+  }
+
+  strong.accent {
+    color: var(--slidev-theme-dark-accent);
+  }
+}
+
+.slidev-layout {
+  font-family: 'Freesentation', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+  padding: 1.5rem 2.5rem;
+  background-color: #fff;
+
+  h1, h2, h3, h4 {
+    font-family: 'Freesentation', ui-sans-serif, system-ui, sans-serif;
+    font-style: normal;
+    font-weight: 900;
+  }
+
+  h5, h6 {
+    font-family: 'Freesentation', ui-sans-serif, system-ui, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+  }
+
+  p, li, div, span {
+    font-weight: inherit;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  hr {
+    margin: 20px 0 20px 0;
+    border: none;
+    height: 0.5px;
+  }
+
+  ul {
+    list-style-type: disc;
+
+    li::marker {
+      transform: translateY(-0.5em);
+    }
+  }
+}
+
+strong.danger {
+  @apply fw-700;
+}
+
+strong.accent {
+  @apply fw-700;
+  font-weight: 700;
+}
