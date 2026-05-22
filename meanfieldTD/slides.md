@@ -21,50 +21,294 @@ pageNumber: true
 
 ---
 layout: section
-subject: Overview
+subject: Introduction
 ---
 
-# Overview
+# Introduction
 
 ---
 layout: default
 headerEnable: true
-headerTitle: Overview
 pageNumber: true
 ---
 
-<div class="slide-title-no-toc" style="position: absolute; left: 40px; top: 65px;">
-Overview
+
+<div class="slide-title-no-toc slide-title-h3" style="position: absolute; left: 40px; top: 65px;">
+Introduction
 </div>
 
-<div style="position: absolute; left: 8%; top: 24%; width: 84%; font-size: 1.05rem; line-height: 1.55;">
+<div class="intro-timeline">
 
-<ul>
-  <li v-click>
-    Deep Reinforcement Learning has attracted much attention as a possible approach to complex sequential decision making.
-  </li>
+  <div v-click class="intro-card card-td">
+    <img src="./public/intro/TD-Gammon.png" class="intro-img contain" />
+    <div class="intro-text">
+      <div class="intro-year">1995</div>
+      <div class="intro-title">TD-Gammon</div>
+      <div class="intro-desc">A landmark success of TD learning.</div>
+      <div class="intro-source">Figure from: Sutton &amp; Barto,<br>Reinforcement Learning, 1998.</div>
+    </div>
+  </div>
 
-  <li v-click style="margin-top: 18px;">
-    Semi-gradient TD is one of the most basic components in RL, but its convergence is not guaranteed in general.
-  </li>
+  <div v-click class="intro-card card-qt">
+    <img src="./public/intro/qt-opt.png" class="intro-img cover" />
+    <div class="intro-text">
+      <div class="intro-year">2018</div>
+      <div class="intro-title">QT-Opt</div>
+      <div class="intro-desc">Large-scale Q-learning for robotic grasping.</div>
+      <div class="intro-source">Figure from: Kalashnikov et al., 2018.</div>
+    </div>
+  </div>
 
-  <li v-click style="margin-top: 18px;">
-    Even with linear function approximation, one can construct examples where semi-gradient TD diverges.
-  </li>
+  <div v-click class="intro-card card-dota">
+    <img src="./public/intro/dota2.png" class="intro-img cover" />
+    <div class="intro-text">
+      <div class="intro-year">2019</div>
+      <div class="intro-title">OpenAI Five</div>
+      <div class="intro-desc">Large-scale RL for complex team games..</div>
+      <div class="intro-source"><sup>©</sup> Valve Corporation.</div>
+    </div>
+  </div>
 
-  <li v-click style="margin-top: 18px;">
-    In this work, we show that for two-layer neural networks, adding noise can lead to convergence.
-  </li>
-</ul>
+  <div v-click class="intro-card card-rlhf">
+    <img src="./public/intro/RLHF.png" class="intro-img cover" />
+    <div class="intro-text">
+      <div class="intro-year">2022</div>
+      <div class="intro-title">RLHF</div>
+      <div class="intro-desc">RL from learned human preferences.</div>
+      <div class="intro-source">Image from: OpenAI.</div>
+    </div>
+  </div>
 
+  <div v-click class="intro-card card-dreamer">
+    <img src="./public/intro/dreamer.png" class="intro-img cover" />
+    <div class="intro-text">
+      <div class="intro-year">2019–2025</div>
+      <div class="intro-title">Dreamer V1–4</div>
+      <div class="intro-desc">Learning world models for control.</div>
+      <div class="intro-source">Figure from: Hafner et al., 2023.</div>
+    </div>
+  </div>
+
+</div>
+
+<div v-click class="intro-td-text">
+  <div class="intro-sentence">
+    These successes of Deep RL are based on <strong class="accent">TD learning</strong>. However, the convergence of TD learning with function approximation remains poorly understood.
+  </div>
+</div>
+
+<div v-click>
+  <div class="intro-posttraining-text-1">
+    Recent successes in LLM post-training are often not based on TD learning, as they can use outcome-based feedback after generating complete answers.
+  </div>
+
+  <div class="intro-llm-area">
+    <div class="intro-llm-line"></div>
+    <div class="intro-llm-card">
+      <img src="./public/intro/GRPO.png" class="intro-img contain" />
+      <div class="intro-text">
+        <div class="intro-year">recent</div>
+        <div class="intro-title">LLM post-training</div>
+        <div class="intro-desc">GRPO, DPO, etc.</div>
+        <div class="intro-source">Figure from: DeepSeek-AI, 2025.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div v-click class="intro-posttraining-text-2">
+  Still, in continuing or long-horizon tasks, such feedback is not always available, and TD learning remains a fundamental component for deep RL.
+</div>
+
+<div v-click class="intro-question">
+  <span class="question-label">Our question:</span>
+  Can TD learning converge with neural-network approximation?
 </div>
 
 <style>
-.slide-title-no-toc {
-  font-family: 'Freesentation';
-  font-weight: 800;
-  font-size: 1.55rem;
+.intro-timeline {
+  position: absolute;
+  left: 48px;
+  top: 8px;
+  width: 460px;
+  height: 420px;
+}
+
+.intro-card {
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 430px;
+  height: 60px;
+  padding: 5px 8px;
+  background: transparent;
+}
+
+.card-td {
+  bottom: 0px;
+}
+
+.card-qt {
+  bottom: 68px;
+}
+
+.card-dota {
+  bottom: 136px;
+}
+
+.card-rlhf {
+  bottom: 204px;
+}
+
+.card-dreamer {
+  bottom: 272px;
+}
+
+.intro-img {
+  width: 110px;
+  height: 52px;
+  border-radius: 7px;
+  background: rgba(245, 245, 245, 0.85);
+  flex-shrink: 0;
+}
+
+.intro-img.cover {
+  object-fit: cover;
+}
+
+.intro-img.contain {
+  object-fit: contain;
+  padding: 2px;
+}
+
+.intro-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.intro-year {
+  font-size: 0.55rem;
+  line-height: 1.0;
+  font-weight: 700;
+  color: rgba(34, 36, 72, 0.56);
+  margin-bottom: 1px;
+}
+
+.intro-title {
+  font-size: 0.78rem;
+  line-height: 1.05;
+  font-weight: 900;
+  color: rgba(34, 36, 72, 0.96);
+}
+
+.intro-desc {
+  margin-top: 4px;
+  font-size: 0.55rem;
+  line-height: 1.08;
+  font-weight: 500;
+  color: rgba(34, 36, 72, 0.72);
+}
+
+.intro-source {
+  margin-top: 4px;
+  font-size: 0.41rem;
+  line-height: 1.05;
+  font-weight: 400;
+  color: rgba(34, 36, 72, 0.28);
+}
+
+.intro-td-text {
+  position: absolute;
+  left: 455px;
+  top: 105px;
+  width: 385px;
+  font-size: 0.9rem;
+  line-height: 1.36;
+  color: rgba(34, 36, 72, 0.92);
+}
+
+.intro-posttraining-text-1 {
+  position: absolute;
+  left: 455px;
+  top: 205px;
+  width: 385px;
+  font-size: 0.9rem;
+  line-height: 1.36;
+  font-weight: 500;
+  color: rgba(34, 36, 72, 0.92);
+}
+
+.intro-posttraining-text-2 {
+  position: absolute;
+  left: 455px;
+  top: 300px;
+  width: 385px;
+  font-size: 0.9rem;
+  line-height: 1.36;
+  font-weight: 500;
+  color: rgba(34, 36, 72, 0.92);
+}
+
+.intro-sentence {
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.intro-llm-area {
+  position: absolute;
+  left: 48px;
+  top: 444px;
+  width: 360px;
+  height: 86px;
+}
+
+.intro-llm-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 310px;
+  border-top: 1.4px dashed rgba(34, 36, 72, 0.34);
+}
+
+.intro-llm-card {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 430px;
+  height: 60px;
+  padding: 5px 8px;
+  background: transparent;
+}
+
+.intro-question {
+  position: absolute;
+  left: 455px;
+  top: 420px;
+  width: 385px;
+  padding: 12px 16px;
+  border: 1.6px solid rgba(45, 45, 45, 0.65);
+  border-radius: 14px;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.question-label {
+  color: #C00000;
+  font-weight: 900;
+  margin-right: 8px;
+}
+
+.slide-title-h3 {
+  font-size: 1.13rem;
   line-height: 1.2;
+  font-weight: 900;
 }
 </style>
 
@@ -369,9 +613,18 @@ This is <strong class="danger">one-step optimization + moving target</strong>: o
 
 </div>
 
-
-
 </div>
+
+
+---
+layout: two-cols
+headerEnable: true
+headerTitle: Background
+pageNumber: true
+---
+
+### Semi-Gradient TD with Linear Function Approximation
+
 
 ---
 layout: two-cols
@@ -388,7 +641,7 @@ pageNumber: true
 
 <div style="font-size: 0.82rem; line-height: 1.35; padding-right: 14px">
 
-#### Two-layer neural network
+### Two-layer neural network
 
 <div v-click.hide>
 <img src="./public/2layernn/diagram.png" style="position: absolute; left: 10px; top: 130px; width: 45%; object-fit: contain; display: block;" />
@@ -425,11 +678,33 @@ $$\begin{gathered}\hat{y}(x;\boldsymbol{\theta})=\hat{y}(x;\mu_M):=\int \phi(x;\
 
 <div style="font-size: 0.82rem; line-height: 1.35; padding-left: 14px;">
 
-#### Infinite width limit
+### Infinite width limit
 
 
 
 </div>
+
+
+---
+layout: two-cols
+headerEnable: true
+headerTitle: Background
+pageNumber: true
+---
+
+### Learning Dynamics of Men-Field Network
+
+
+---
+layout: two-cols
+headerEnable: true
+headerTitle: Background
+pageNumber: true
+---
+
+### Men-Field Regime for Semi-Gradient TD
+
+
 
 ---
 layout: section
@@ -438,12 +713,26 @@ subject: Convergence Analysis
 
 # Convergence Analysis
 
+
 ---
 layout: default
 headerEnable: true
 headerTitle: Convergence Analysis
 pageNumber: true
 ---
+
+## Assumptions
+
+
+---
+layout: default
+headerEnable: true
+headerTitle: Convergence Analysis
+pageNumber: true
+---
+
+
+## Main Result
 
 **Policy evaluation**
 
@@ -563,6 +852,16 @@ The same entropy-versus-sensitivity mechanism extends beyond policy evaluation.
 
 
 ---
+layout: default
+headerEnable: true
+headerTitle: Convergence Analysis
+pageNumber: true
+---
+
+## Neumerical Example
+
+
+---
 layout: section
 subject: Conclusion
 ---
@@ -570,6 +869,55 @@ subject: Conclusion
 # Conclusion
 
 
+---
+layout: default
+headerEnable: true
+headerTitle: Conclusion
+pageNumber: true
+---
+
+<div class="slide-title-no-toc slide-title-h3" style="position: absolute; left: 40px; top: 65px;">
+Conclusion
+</div>
+
+<div class="conclusion-list-wrap">
+  <ul class="conclusion-list">
+    <li>We focused on semi-gradient TD with two-layer neural-network approximation.</li>
+    <li>In the mean-field regime, noisy semi-gradient TD converges under a stability condition.</li>
+    <li>The analysis also extends beyond policy evaluation, including entropy-regularized off-policy soft Q-learning.</li>
+    <li>Future work: connect this mean-field convergence result to error bounds for the true value function.</li>
+  </ul>
+</div>
+
+<style>
+.conclusion-list-wrap {
+  position: absolute;
+  left: 45px;
+  top: 115px;
+  width: 820px;
+}
+
+.conclusion-list {
+  font-size: 1.28rem;
+  line-height: 1.45;
+  padding-left: 28px;
+  margin: 0;
+}
+
+.conclusion-list li {
+  margin-bottom: 26px;
+}
+
+.conclusion-list li:last-child {
+  margin-bottom: 0;
+}
+
+.slide-title-h3 {
+  font-size: 1.13rem;
+  line-height: 1.2;
+  font-weight: 900;
+}
+</style>
 
 
 ---
