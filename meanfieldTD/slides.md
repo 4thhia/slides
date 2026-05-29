@@ -3,10 +3,15 @@ theme: ../common/themes/neat
 routerMode: hash
 layout: cover
 colorSchema: light
-coverTitle: "On the Convergence of Semi-Gradient TD: A Mean-Field Perspective"
+
+coverTitle: |
+  On the Convergence of Semi-Gradient TD:
+  A Mean-Field Perspective
+
 coverAuthor: Haruki Settai
 coverCollaborator: "Tadashi Kozuno"
 coverSupervisor: "Shinji Ito"
+
 lineNumbers: true
 ---
 
@@ -117,7 +122,7 @@ Introduction
 </div>
 
 <div v-click class="intro-posttraining-text-2">
-  Still, in continuing or long-horizon tasks, such feedback is not always available, and TD learning remains a fundamental component for deep RL.
+  Still, in continuing or long-horizon tasks, such full feedback is not always available, TD learning remains a fundamental component for deep RL.
 </div>
 
 <div v-click class="intro-question">
@@ -404,9 +409,9 @@ $r \equiv 1,\quad \gamma=1$
 
 <div v-click style="position: absolute; left: 5px; top: 83px; width: 95px; height: 54px; z-index: 10;">
   <img src="./public/unknown.png" style="width: 100%; height: 100%; display: block;" />
-  <div style="position: absolute; left: 0; top: 10px; width: 100%; padding-left: 5px; text-align: left; color: white; font-size: 1.0rem; font-weight: 800; letter-spacing: 0.02em; line-height: 1.05;">
-    Unknown in <br>
-    RL
+  <div style="position: absolute; left: 87px; top: 3px; width: 100%; padding-left: 10px; text-align: left; color: black; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.02em; line-height: 1.05;">
+    Unknown<br>
+    in RL
   </div>
 </div>
 
@@ -444,7 +449,7 @@ pageNumber: true
 
 <div v-click>
 
-#### Gradient TD
+#### Residual Gradient (Baird, 1995)
 
 We approximate the value function by $V(s;\theta)$.
 
@@ -509,7 +514,7 @@ $$\begin{aligned}-\nabla_\theta L(\theta)=\mathbb{E}_{S}\bigg[\bigg(\mathbb{E}_{
 
 <div v-click>
 
-#### Semi-Gradient TD
+#### Semi-Gradient TD (Sutton, 1988)
 
 
 In semi-gradient TD, we first take the descent direction of $L^*$.
@@ -534,6 +539,43 @@ In general, this vector field is not conservative: $\partial_{\theta_j}(g)_i\ne\
 
 </div>
 
+
+---
+layout: two-cols
+headerEnable: true
+headerTitle: Background
+pageNumber: true
+---
+
+### Why Not Use the True Gradient?
+
+Although Residual Gradient follows the true gradient of the Bellman-residual loss, semi-gradient TD is computationally lightweight and often learns faster in practice.
+
+::left::
+
+#### Linear Function Approximation
+
+<img src="./public/off-policy/linear.png" style="position: absolute; left: 107.5px; top: 220px; width: 27%; object-fit: contain; display: block;" />
+
+<div style="position: absolute; left: 80px; top: 485px; width: 330px; font-size: 0.62rem; line-height: 1.2; color: #444; text-align: center;">
+  TD is often competitive with gradient-TD alternatives in small linear benchmarks.<sup>1</sup>
+</div>
+
+::right::
+
+#### Nonlinear Function Approximation
+
+<img src="./public/off-policy/nonlinear.png" style="position: absolute; left: 507.5px; top: 220px; width: 30%; object-fit: contain; display: block;" />
+
+<div style="position: absolute; left: 490px; top: 485px; width: 360px; font-size: 0.62rem; line-height: 1.2; color: #444; text-align: center;">
+  With neural networks, TD can learn better policies than Residual Gradient.<sup>2</sup>
+</div>
+
+<div style="position: absolute; left: 24px; bottom: 10px; width: calc(100% - 48px); font-size: 0.5rem; line-height: 1.15; color: #666;">
+  <sup>1</sup> Figure adapted from Sutton et al. (2009); selected panels shown and non-TD methods grouped visually for clarity.<br>
+  <sup>2</sup> Figure adapted from Yin et al., <i>An Experimental Comparison Between Temporal Difference and Residual Gradient with Neural Network Approximation</i>.
+</div>
+
 ---
 layout: two-cols
 headerEnable: true
@@ -551,7 +593,7 @@ pageNumber: true
 
 
 
-#### Gradient TD
+#### Residual Gradient
 
 $$\begin{aligned}&\text{Fixed objective}\\ &\qquad\;\, L(\theta)=\frac{1}{2}\mathbb{E}_{S}\left[\left(\mathbb{E}_{A,S'}\left[r+\gamma V(S';\theta)\right]-V(S;\theta)\right)^2\right]\\ &\text{Direction}\\ &-\nabla_\theta L(\theta)=\mathbb{E}_{S}\bigg[\bigg(\mathbb{E}_{A,S'}\left[r+\gamma V(S';\theta)\right]-V(S;\theta)\bigg)\\ &\qquad\qquad\qquad\qquad\qquad\bigg(\nabla_\theta V(S;\theta)-\gamma\mathbb{E}_{S'}\left[\nabla_\theta V(S';\theta)\right]\bigg)\bigg]\end{aligned}$$
 
@@ -623,7 +665,56 @@ headerTitle: Background
 pageNumber: true
 ---
 
-### Semi-Gradient TD with Linear Function Approximation
+### On-Policy and Off-Policy TD Learning
+
+
+
+<div style="font-size: 0.9rem; line-height: 1.35; padding-right: 16px;">
+
+Semi-gradient TD can be written as
+
+$$\theta_{t+1}=\theta_t-\alpha\nabla_\omega H(\theta_t,\theta_t).$$
+
+where
+
+$$H(\theta,\omega)=\frac{1}{2}\mathbb{E}_{\substack{S\sim d\\ A\sim\pi(\cdot\mid S)\\ S'\sim P(\cdot\mid S,A)}}\left[\left(r(S,A)+\gamma V(S';\theta)-V(S;\omega)\right)^2\right].$$
+
+The distribution $d$ specifies where the TD error is measured.
+
+</div>
+
+::left::
+
+<div style="font-size: 0.95rem; line-height: 1.35; padding-left: 0px; margin-top: 0px;">
+
+<div v-click>
+
+On-policy:$d$ is the stationary distribution of the Markov chain induced by the target policy $\pi$.
+</div>
+
+<div v-click style="margin-top: 22px;">
+Off-policy: otherwise.
+
+<div style="position: absolute; left: 50px; top: 455px;">
+  Off-policy learning is important for sample efficiency, <br> but together with bootstrapping and function approximation, <br> it can become unstable.
+</div>
+</div>
+
+</div>
+
+::right::
+
+<div style="font-size: 0.95rem; line-height: 1.35; padding-left: 12px; margin-top: 0px;">
+
+<div v-click style="margin-top: 18px;">
+
+  Even with linear function approximation, off-policy TD can diverge.<sup>1</sup>
+  <img src="./public/off-policy/baird.png" style="position: absolute; right: 120px;width: 25%; object-fit: contain; display: block;" />
+</div>
+
+</div>
+
+
 
 
 ---
@@ -660,17 +751,35 @@ $$\begin{gathered}\hat{y}(x;\boldsymbol{\theta})=\frac{1}{M}\sum_{i=1}^Ma_i\sigm
 $$\begin{gathered}\hat{y}(x;\boldsymbol{\theta})=\frac{1}{M}\sum_{i=1}^Ma_i\sigma\left(\left\langle w_i,x\right\rangle+b_i\right)=:\frac{1}{M}\sum_{i=1}^M\phi(x;\theta_i)\\ \bigg(\theta_i:=\left(a_i,w_i,b_i\right)\in\mathbb{R}^{d}\bigg)\end{gathered}$$
 
 </div>
+</div>
+
+<div v-click>
 
 <div style="position: absolute;top: 345px;">
 
 The output $\hat{y}$ is invariant to swapping $\theta_i$ and $\theta_j$.
 This motivates the expression
 
-$$\begin{gathered}\hat{y}(x;\boldsymbol{\theta})=\hat{y}(x;\mu_M):=\int \phi(x;\theta)\,\mu_M(\mathrm{d}\theta)\\ \left(\mu_M=\frac{1}{M}\sum_{i=1}^M\delta_{\theta_i}\in\mathcal{P}(\mathbb{R}^d)\right)\end{gathered}$$
+$$\hat{y}(x;\boldsymbol{\theta})=\int \phi(x;\theta)\,\mu_M(\mathrm{d}\theta)\left(\mu_M=\frac{1}{M}\sum_{i=1}^M\delta_{\theta_i}\right)$$
 
 </div>
 
 </div>
+
+<div v-click>
+
+<div style="position: absolute;top: 455px;">
+
+**Infinite width limit :** For $\mu\in\mathcal{P}(\mathbb{R}^d)$,
+<div style="font-size: 0.82rem; position: absolute; left: 120px; top: 30px;">
+
+$$\hat{y}(x;\mu)=\int \phi(x;\theta)\,\mu(\mathrm{d}\theta)$$
+
+</div>
+</div>
+
+</div>
+
 
 </div>
 
@@ -678,40 +787,271 @@ $$\begin{gathered}\hat{y}(x;\boldsymbol{\theta})=\hat{y}(x;\mu_M):=\int \phi(x;\
 
 <div style="font-size: 0.82rem; line-height: 1.35; padding-left: 14px;">
 
-### Infinite width limit
+### Supervised Learning
 
+<div v-click>
+
+Define the regularized population objective
+
+$$E(\mu)=\frac{1}{2}\mathbb{E}_{(x,y)\sim\rho}\left[\left(\hat y(x;\mu)-y\right)^2\right]+\frac{\lambda}{2}\int \|\theta\|^2\,\mu(d\theta).$$
+
+</div>
+
+<div v-click>
+
+Particle noisy gradient descent:
+
+$$\theta_i^{k+1}=\theta_i^k-\eta\nabla_\theta\frac{\delta E}{\delta\mu}(\mu_k)(\theta_i^k)+\sqrt{2\tau\eta}\,\xi_i^k.$$
+
+where $\:\xi_i^k\sim\mathcal{N}(0,I)$.
+</div>
+
+<div v-click>
+
+Continuous-time limit:
+
+$$\begin{aligned}d\theta_t&=-\nabla_\theta\frac{\delta E}{\delta\mu}(\mu_t)(\theta_t)\,dt+\sqrt{2\tau}\,dW_t,\\\partial_t\mu_t&=\nabla_\theta\cdot\left(\mu_t\nabla_\theta\frac{\delta E}{\delta\mu}(\mu_t)\right)+\tau\Delta_\theta\mu_t.\end{aligned}$$
+
+</div>
+
+<div v-click>
+
+This is the Wasserstein gradient flow of $F(\mu):=E(\mu)+\tau\mathrm{Ent}(\mu)$.
+
+</div>
 
 
 </div>
 
 
 ---
-layout: two-cols
+layout: default
 headerEnable: true
 headerTitle: Background
 pageNumber: true
 ---
 
-### Learning Dynamics of Men-Field Network
+### Convergence Analysis of Mean Field Langevin Dynamics
+<br>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 42px; align-items: start;">
+
+<div v-click style="font-size: 0.78rem; line-height: 1.25; min-width: 0;">
+
+#### Key tools
+
+Define the local Gibbs response and the global minimizer by
+$$\pi_\mu:=\operatorname*{argmin}_{\nu}\left\{\int \frac{\delta E}{\delta\mu}(\mu)(\theta)\,\nu(d\theta)+\tau\mathrm{Ent}(\nu)\right\},\, \pi_*:=\operatorname*{argmin}_{\mu}F(\mu).$$
+
+<div class="theorem-box" style="--theorem-padding: 10px 14px; --theorem-margin-top: 15px; --theorem-font-size: 0.74rem; --theorem-line-height: 1.24; --theorem-head-margin-bottom: 6px; --theorem-body-margin-top: 6px;">
+  <div class="theorem-head">
+    <span class="theorem-label">Assumption.</span>
+    <span class="theorem-name">Uniform Log-Sobolev Inequality</span>
+  </div>
+
+  <div class="theorem-body">
+
+The Gibbs responses $\pi_\mu$ satisfy LSI with a uniform constant $\rho_\tau>0$:
+$$\mathrm{KL}(\nu\|\pi_\mu)\leq\frac{1}{2\rho_\tau}I(\nu\|\pi_\mu),\qquad\forall\mu,\nu.$$
+  </div>
+</div>
+
+<div style="margin-top: 5px; font-size: 0.64rem; line-height: 1.24; color: rgba(35, 35, 55, 0.72);">
+  <b>Intuition.</b> A large gap to the Gibbs response implies a large descending force.
+</div>
+
+<div class="theorem-box" style="--theorem-padding: 10px 14px; --theorem-margin-top: 15px; --theorem-font-size: 0.74rem; --theorem-line-height: 1.24; --theorem-head-margin-bottom: 6px; --theorem-body-margin-top: 6px;">
+  <div class="theorem-head">
+    <span class="theorem-label">Lemma.</span>
+    <span class="theorem-name">Entropy Sandwich (Informal) (Nitanda et al. (2022) and Chizat (2022))</span>
+  </div>
+
+  <div class="theorem-body">
+
+The free-energy gap is sandwiched by relative entropy:
+$$\tau\mathrm{KL}(\mu\|\pi_*)\leq F(\mu)-F(\pi_*)\leq\tau\mathrm{KL}(\mu\|\pi_\mu).$$
+  </div>
+</div>
+
+<div style="margin-top: 5px; font-size: 0.64rem; line-height: 1.24; color: rgba(35, 35, 55, 0.72);">
+  <b>Intuition.</b> The global optimality gap can be controlled by the distance from the current Gibbs response.
+</div>
+
+</div>
+
+<div style="font-size: 0.78rem; line-height: 1.25; min-width: 0;">
+
+<div v-click>
+
+#### Analysis
+
+<div class="theorem-box" style="--theorem-padding: 10px 14px; --theorem-margin-top: 20px; --theorem-font-size: 0.74rem; --theorem-line-height: 1.24; --theorem-head-margin-bottom: 6px; --theorem-body-margin-top: 6px;">
+  <div class="theorem-head">
+    <span class="theorem-label">Theorem.</span>
+    <span class="theorem-name">Exponential Convergence (Informal) (Nitanda et al. (2022) and Chizat (2022))</span>
+  </div>
+
+  <div class="theorem-body">
+
+Under suitable regularity, flat convexity, and uniform LSI, the mean-field Langevin dynamics satisfy
+$$F(\mu_t)-F(\pi_*)\leq e^{-2\tau\rho_\tau t}\left(F(\mu_0)-F(\pi_*)\right).$$
+  </div>
+</div>
+
+</div>
+
+<div v-click style="margin-top: -10px;">
+
+_Proof Sketch._
+
+<div style="position: absolute; left: 545px; top: 310px; font-size: 0.8rem;">
+
+Along the mean-field Langevin dynamics,
+$$\begin{aligned}\frac{d}{dt}\left(F(\mu_t)-F(\pi_*)\right)&=-\tau^2 I(\mu_t\|\pi_{\mu_t})\\&\leq -2\rho_\tau\tau^2\mathrm{KL}(\mu_t\|\pi_{\mu_t})\\&\leq -2\rho_\tau\tau\left(F(\mu_t)-F(\pi_*)\right).\end{aligned}$$
+
+Therefore, Gronwall gives
+$$F(\mu_t)-F(\pi_*)\leq e^{-2\tau\rho_\tau t}\left(F(\mu_0)-F(\pi_*)\right).$$
+</div>
+</div>
+
+</div>
+
+</div>
+
 
 
 ---
-layout: two-cols
+layout: default
 headerEnable: true
 headerTitle: Background
 pageNumber: true
 ---
 
-### Men-Field Regime for Semi-Gradient TD
+## Prior Work
 
+<br>
+
+<div style="font-size: 0.84rem; line-height: 1.34;">
+
+#### Linear Function Approximation
+
+<b>On-policy.</b> Semi-gradient TD converges under standard assumptions, and finite-time/sample-efficiency analyses are also well studied.
+<span style="font-size: 0.68rem; color: #666;">Tsitsiklis and Van Roy (1997); Bhandari et al. (2018)</span>
+
+
+<b>Off-policy.</b> Even with linear function approximation, one can construct divergent examples; regularized variants can recover convergence in some settings.
+<span style="font-size: 0.68rem; color: #666;">Baird (1995); Sutton et al. (2009); Lim and Lee (2022)</span>
+
+
+#### Neural Network Approximation
+
+<b>NTK regime.</b> Convergence guarantees and rate analyses have been developed, but the analysis is restricted to dynamics near initialization.
+<span style="font-size: 0.68rem; color: #666;">Cai et al. (2019), etc</span>
+
+
+<b>Mean-field regime.</b> Convergence is known when an optimal solution is sufficiently close to the initialization.
+<span style="font-size: 0.68rem; color: #666;">Zhang et al. (2020)</span>
+
+
+<b>Other approaches.</b> Projection-type constraints are often used to keep TD iterates bounded, but they analyze a constrained dynamics rather than the original unconstrained update.
+<span style="font-size: 0.68rem; color: #666;">Xu and Gu (2020); Cayci et al. (2021); Tian et al. (2023); Gallici et al. (2025)</span>
+
+
+<div style="padding: 12px 14px; border: 1.4px solid rgba(35,35,35,0.72); border-radius: 10px; background: rgba(255,255,255,0.72);">
+  <b>This work.</b> We identify a stability condition for noisy mean-field semi-gradient TD with feature learning, and prove convergence rates under this condition. We also extend the framework to off-policy soft Q-learning.
+</div>
+
+</div>
 
 
 ---
 layout: section
-subject: Convergence Analysis
+subject: Main Results
 ---
 
-# Convergence Analysis
+# Main Results
+
+
+---
+layout: two-cols
+headerEnable: true
+headerTitle: Our Analysis
+pageNumber: true
+---
+
+### Mean-Field Semi-Gradient TD
+
+<br>
+
+::left::
+
+<div style="font-size: 0.76rem; line-height: 1.27; padding-right: 16px;">
+
+
+<div v-click>
+
+#### Frozen-target objectives
+
+Recall the frozen-target objective
+
+$$H(\theta,\omega)=\frac{1}{2}\mathbb{E}_{\substack{S\sim d\\A\sim\pi(\cdot\mid S)\\S'\sim P(\cdot\mid S,A)}}\left[\left(r(S,A)+\gamma V(S';\theta)-V(S;\omega)\right)^2\right].$$
+
+
+
+</div>
+
+
+<div v-click>
+
+In the mean-field limit, define
+
+$$H(\mu,\nu)=\frac{1}{2}\mathbb{E}_{\substack{S\sim d\\A\sim\pi(\cdot\mid S)\\S'\sim P(\cdot\mid S,A)}}\left[\left(r(S,A)+\gamma V(S';\mu)-V(S;\nu)\right)^2\right],$$
+
+$$E(\mu,\nu):=H(\mu,\nu)+\frac{\lambda}{2}\int\|\theta\|^2\nu(d\theta),$$
+
+$$F(\mu,\nu):=E(\mu,\nu)+\tau\mathrm{Ent}(\nu).$$
+
+</div>
+
+
+<div v-click>
+
+#### Noisy particle semi-gradient TD
+
+$$\theta_i^{k+1}=\theta_i^k-\eta\nabla_\theta\frac{\delta E}{\delta\nu}(\mu_k,\mu_k)(\theta_i^k)+\sqrt{2\tau\eta}\,\xi_i^k.$$
+
+where $\xi_i^k\sim\mathcal{N}(0,I)$.
+
+</div>
+
+</div>
+
+::right::
+
+<div style="font-size: 0.76rem; line-height: 1.27; padding-left: 16px;">
+
+<div v-click>
+
+#### Continuous-time limit
+
+$$\begin{aligned}d\theta_t&=-\nabla_\theta\frac{\delta E}{\delta\nu}(q_t,q_t)(\theta_t)\,dt+\sqrt{2\tau}\,dW_t,\\\partial_tq_t&=\nabla_\theta\cdot\left(q_t\nabla_\theta\frac{\delta E}{\delta\nu}(q_t,q_t)\right)+\tau\Delta_\theta q_t.\end{aligned}$$
+
+</div>
+
+
+<div v-click>
+
+For each frozen target $\mu$, define
+$$\pi_{\mu,*}:=\operatorname*{argmin}_{\nu}F(\mu,\nu),\qquad \pi_{\mu,\nu}(\theta)\propto\exp\left(-\frac{1}{\tau}\frac{\delta E}{\delta\nu}(\mu,\nu)(\theta)\right).$$
+
+The limiting equilibrium is the self-consistent minimizer
+$$\pi_*=\pi_{\pi_*,*}.$$
+
+<img src="./public/moving_target/_step07.png" style="position: absolute; right: 180px; bottom: 10px; width: 23%; object-fit: contain;" />
+
+</div>
+
+</div>
 
 
 ---
@@ -721,7 +1061,29 @@ headerTitle: Convergence Analysis
 pageNumber: true
 ---
 
-## Assumptions
+## Proof Strategy
+
+
+
+<div v-click.hide style="position: absolute; left: -180px; top: 100px; width: 70%; font-size: 0.92rem;">
+<div v-click>
+
+$$\frac{d}{dt}\left(F(\mu_t,\mu_t)-F(\pi_*,\pi_*)\right)$$
+</div>
+</div>
+<div v-after style="position: absolute; left: -60px; top: 100px; width: 70%; font-size: 0.92rem;">
+
+$$\begin{aligned}W_2(q_t, q_*)&=W_2(q_t, \pi_{q_t,*})+W_2(\pi_{q_t,*}, \pi_{*})\quad(\text{triangle inequality})\\ &=:W_2(q_t, T(q_t))+W_2(T(q_t), \pi_{*})\\ &=W_2(q_t, T(q_t))+W_2(T(q_t), T(\pi_{*}))\\ &\overset{?}{=}W_2(q_t, T(q_t))+CW_2(q_t, q_*)\end{aligned}$$
+</div>
+
+<div v-click style="position: absolute; left: -160px; top: 230px; width: 70%; font-size: 0.92rem;">
+
+$$\Longrightarrow W_2(q_t, q_*)\leq \frac{1}{1-C}W_2(q_t, T(q_t))$$
+</div>
+
+
+<img src="./public/moving_target/_step07.png" style="position: absolute; right: 180px; bottom: 10px; width: 23%; object-fit: contain;" />
+
 
 
 ---
@@ -736,15 +1098,17 @@ pageNumber: true
 
 **Policy evaluation**
 
+
+
 <div class="theorem-box theorem">
   <div class="theorem-head">
     <span class="theorem-label">Theorem 1</span>
-    <span class="theorem-name">(Instantaneous optimality gap decay).</span>
+    <span class="theorem-name">(Frozen-target suboptimality gap decay).</span>
   </div>
 
   <div class="theorem-body">
 
-Under the mixed-smoothness assumption and the stability condition $\rho\tau>L_p$, the one-step frozen-target optimality gap decays exponentially:
+Under the mixed-smoothness assumption and the stability condition $\rho\tau>L_p$, the one-step frozen-target suboptimality gap decays exponentially:
 
 $$G(t):=F(q_t,q_t)-F(q_t,\pi_{q_t,*}),\qquad G(t)\leq e^{-2(\rho\tau-L_p)t}G(0).$$
 
@@ -819,6 +1183,15 @@ $$W_2(q_t,\pi_*)\leq \frac{\sqrt{2\rho\tau}}{\rho\tau-L_p}\sqrt{G(0)}e^{-(\rho\t
 The same stability condition controls both the frozen-target optimization error and the movement of the target.
 
 </div>
+
+---
+layout: two-cols
+headerEnable: true
+headerTitle: "Quick Recap: Q-Learning"
+pageNumber: true
+---
+
+### Q-Learning
 
 ---
 layout: default
