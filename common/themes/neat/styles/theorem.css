@@ -1,4 +1,10 @@
 .theorem-box {
+  --theorem-width: 100%;
+  --theorem-max-width: none;
+  --theorem-box-sizing: border-box;
+  --theorem-margin-left: 0;
+  --theorem-margin-right: 0;
+
   --theorem-border-width: 1.6px;
   --theorem-border-color: rgba(35, 35, 35, 0.86);
   --theorem-radius: 10px;
@@ -26,6 +32,12 @@
   --theorem-comment-font-size: 0.86rem;
   --theorem-comment-line-height: 1.45;
   --theorem-comment-color: rgba(35, 35, 55, 0.84);
+
+  width: var(--theorem-width);
+  max-width: var(--theorem-max-width);
+  box-sizing: var(--theorem-box-sizing);
+  margin-left: var(--theorem-margin-left);
+  margin-right: var(--theorem-margin-right);
 
   border: var(--theorem-border-width) solid var(--theorem-border-color);
   border-radius: var(--theorem-radius);

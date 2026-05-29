@@ -1073,36 +1073,66 @@ $$\frac{d}{dt}\left(F(\mu_t,\mu_t)-F(\pi_*,\pi_*)\right)$$
 </div>
 <div v-after style="position: absolute; left: -60px; top: 100px; width: 70%; font-size: 0.92rem;">
 
-$$\begin{aligned}W_2(q_t, q_*)&=W_2(q_t, \pi_{q_t,*})+W_2(\pi_{q_t,*}, \pi_{*})\quad(\text{triangle inequality})\\ &=:W_2(q_t, T(q_t))+W_2(T(q_t), \pi_{*})\\ &=W_2(q_t, T(q_t))+W_2(T(q_t), T(\pi_{*}))\\ &\overset{?}{=}W_2(q_t, T(q_t))+CW_2(q_t, q_*)\end{aligned}$$
+$$\begin{aligned}W_2(q_t, q_*)&\leq W_2(q_t, \pi_{q_t,*})+W_2(\pi_{q_t,*}, \pi_{*})\quad(\text{triangle inequality})\\ &=:W_2(q_t, T(q_t))+W_2(T(q_t), \pi_{*})\\ &=W_2(q_t, T(q_t))+W_2(T(q_t), T(\pi_{*}))\\ &\overset{?}{\leq}W_2(q_t, T(q_t))+CW_2(q_t, \pi_*)\end{aligned}$$
 </div>
 
 <div v-click style="position: absolute; left: -160px; top: 230px; width: 70%; font-size: 0.92rem;">
 
-$$\Longrightarrow W_2(q_t, q_*)\leq \frac{1}{1-C}W_2(q_t, T(q_t))$$
+$$\Longrightarrow W_2(q_t, \pi_*)\leq \frac{1}{1-C}W_2(q_t, T(q_t))$$
+</div>
+
+<div v-click style="position: absolute; left: 17px; top: 235px; width: 70%; font-size: 0.92rem;">
+
+$$\xrightarrow{t\to\infty} 0?$$
 </div>
 
 
-<img src="./public/moving_target/_step07.png" style="position: absolute; right: 180px; bottom: 10px; width: 23%; object-fit: contain;" />
 
+<div v-click style="position: absolute; left: 60px; bottom: 5px; width: 40%; font-size: 0.92rem;">
 
-
----
-layout: default
-headerEnable: true
-headerTitle: Convergence Analysis
-pageNumber: true
----
-
-
-## Main Result
-
-**Policy evaluation**
-
-
-
-<div class="theorem-box theorem">
+<div class="theorem-box" style="--theorem-padding: 5px 14px; --theorem-margin-top: 15px; --theorem-font-size: 0.74rem; --theorem-line-height: 1.24; --theorem-head-margin-bottom: 6px; --theorem-body-margin-top: 6px;">
   <div class="theorem-head">
-    <span class="theorem-label">Theorem 1</span>
+    <span class="theorem-label">Assumption.</span>
+    <span class="theorem-name">(Mixed smoothness).</span>
+  </div>
+
+  <div class="theorem-body">
+
+$$\left\|\nabla_\theta\left[\frac{\delta H}{\delta \mu}(\mu,\nu_1)(\theta)-\frac{\delta H}{\delta \mu}(\mu,\nu_2)(\theta)\right]\right\|_2\leq L_p W_2(\nu_1,\nu_2).$$
+  </div>
+</div>
+
+</div>
+
+
+
+<div v-click style="position: absolute; left: 460px; top: 150px; width: 70%; font-size: 0.92rem;">
+
+<div class="theorem-box" style="--theorem-width: 65%; --theorem-padding: 10px 14px; --theorem-margin-top: 15px; --theorem-font-size: 0.74rem; --theorem-line-height: 1.24; --theorem-head-margin-bottom: 6px; --theorem-body-margin-top: 6px;">
+  <div class="theorem-head">
+    <span class="theorem-label">Lemma1.</span>
+    <span class="theorem-name">(Stability of the Gibbs response map).</span>
+  </div>
+
+  <div class="theorem-body">
+
+Let $T(\mu):=\pi_{\mu,*}(\theta)d\theta$ be the frozen-target Gibbs response map. Then
+
+$$W_2(T(\mu_1),T(\mu_2))\leq \frac{L_p}{\rho\tau}W_2(\mu_1,\mu_2).$$
+
+In particular, if $\rho\tau>L_p$, then $T$ is a contraction.
+  </div>
+</div>
+
+<div style="position: absolute; left: -70px; top: 40px; font-size: 3rem; line-height: 1; color: #000000;">⟵</div>
+
+</div>
+
+<div v-click style="position: absolute; left: 60px; top: 310px; width: 70%; font-size: 0.92rem;">
+
+<div class="theorem-box" style="--theorem-width: 65%; --theorem-padding: 10px 14px; --theorem-margin-top: 15px; --theorem-font-size: 0.74rem; --theorem-line-height: 1.24; --theorem-head-margin-bottom: 6px; --theorem-body-margin-top: 6px;">
+  <div class="theorem-head">
+    <span class="theorem-label">Theorem1.</span>
     <span class="theorem-name">(Frozen-target suboptimality gap decay).</span>
   </div>
 
@@ -1115,57 +1145,25 @@ $$G(t):=F(q_t,q_t)-F(q_t,\pi_{q_t,*}),\qquad G(t)\leq e^{-2(\rho\tau-L_p)t}G(0).
   </div>
 </div>
 
-<div v-click class="theorem-comment">
-
-The semi-gradient dynamics is not analyzed through decrease of a fixed objective.
-Instead, we compare $q_t$ with the instantaneous frozen-target minimizer $\pi_{q_t,*}$.
+<div style="position: absolute; left: 270px; top: -45px; font-size: 2.5rem; line-height: 1; color: #000000;">↑</div>
 
 </div>
 
----
-layout: default
-headerEnable: true
-headerTitle: Convergence Analysis
-pageNumber: true
----
 
-**Policy evaluation**
 
-<div class="theorem-box lemma">
+
+
+<img src="./public/moving_target/_step07.png" style="position: absolute; right: 180px; bottom: 10px; width: 23%; object-fit: contain" />
+
+
+
+<div v-click style="position: absolute; left: 560px; top: -10px; width: 70%; font-size: 0.92rem;">
+
+
+
+<div class="theorem-box" style="--theorem-width: 60%; --theorem-padding: 10px 14px; --theorem-margin-top: 15px; --theorem-font-size: 0.74rem; --theorem-line-height: 1.24; --theorem-head-margin-bottom: 6px; --theorem-body-margin-top: 6px;">
   <div class="theorem-head">
-    <span class="theorem-label">Lemma 1</span>
-    <span class="theorem-name">(Stability of the Gibbs response map).</span>
-  </div>
-
-  <div class="theorem-body">
-
-Let $T(\mu):=\pi_{\mu,*}(\theta)d\theta$ be the frozen-target Gibbs response map. Then
-
-$$W_2(T(\mu_1),T(\mu_2))\leq \frac{L_p}{\rho\tau}W_2(\mu_1,\mu_2).$$
-
-In particular, if $\rho\tau>L_p$, then $T$ is a contraction.
-
-  </div>
-</div>
-
-<div v-click class="theorem-comment">
-
-This converts the local frozen-target relaxation into stability of the moving target itself.
-
-</div>
-
----
-layout: default
-headerEnable: true
-headerTitle: Convergence Analysis
-pageNumber: true
----
-
-**Policy evaluation**
-
-<div class="theorem-box corollary">
-  <div class="theorem-head">
-    <span class="theorem-label">Corollary 1</span>
+    <span class="theorem-label">Corollary1.</span>
     <span class="theorem-name">(Convergence to a self-consistent equilibrium).</span>
   </div>
 
@@ -1178,50 +1176,9 @@ $$W_2(q_t,\pi_*)\leq \frac{\sqrt{2\rho\tau}}{\rho\tau-L_p}\sqrt{G(0)}e^{-(\rho\t
   </div>
 </div>
 
-<div v-click class="theorem-comment">
-
-The same stability condition controls both the frozen-target optimization error and the movement of the target.
-
 </div>
 
----
-layout: two-cols
-headerEnable: true
-headerTitle: "Quick Recap: Q-Learning"
-pageNumber: true
----
 
-### Q-Learning
-
----
-layout: default
-headerEnable: true
-headerTitle: Convergence Analysis
-pageNumber: true
----
-
-**Extension to Soft Q-learning**
-
-<div class="theorem-box proposition">
-  <div class="theorem-head">
-    <span class="theorem-label">Proposition 4</span>
-    <span class="theorem-name">(Soft Q-learning convergence).</span>
-  </div>
-
-  <div class="theorem-body">
-
-For the entropy-regularized off-policy soft Q-learning functional, assume the same Gibbs-form characterization, uniform LSI, and mixed-smoothness estimate with constant $L_p^Q$. If $\rho\tau>L_p^Q$, then the Gibbs response map has a unique fixed point $\pi_*^Q$, and
-
-$$W_2(q_t,\pi_*^Q)\leq \frac{\sqrt{2\rho\tau}}{\rho\tau-L_p^Q}\sqrt{G_Q(0)}e^{-(\rho\tau-L_p^Q)t}.$$
-
-  </div>
-</div>
-
-<div v-click class="theorem-comment">
-
-The same entropy-versus-sensitivity mechanism extends beyond policy evaluation.
-
-</div>
 
 
 ---
@@ -1232,6 +1189,11 @@ pageNumber: true
 ---
 
 ## Neumerical Example
+
+
+<img src="./public/experiment/bellman_residual_overlay.png" style="position: absolute; right: 530px; bottom: 90px; width: 40%; object-fit: contain" />
+
+<img src="./public/experiment/learning_curves.png" style="position: absolute; right: 100px; bottom: 90px; width: 40%; object-fit: contain" />
 
 
 ---
