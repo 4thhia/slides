@@ -1,92 +1,97 @@
 .theorem-box {
-  --theorem-width: 100%;
-  --theorem-max-width: none;
-  --theorem-box-sizing: border-box;
-  --theorem-margin-left: 0;
-  --theorem-margin-right: 0;
-
-  --theorem-border-width: 1.6px;
-  --theorem-border-color: rgba(35, 35, 35, 0.86);
-  --theorem-radius: 10px;
-  --theorem-padding: 18px 26px;
-  --theorem-margin-top: 28px;
-  --theorem-font-size: 1.1rem;
-  --theorem-line-height: 1.36;
-  --theorem-text-color: rgba(35, 35, 35, 0.92);
-  --theorem-background: rgba(255, 255, 255, 0.68);
-
-  --theorem-head-gap: 8px;
-  --theorem-head-margin-bottom: 10px;
-
+  --theorem-margin-y: 1rem;
+  --theorem-border-width: 1.35px;
+  --theorem-radius:4px;
+  --theorem-head-padding-top: 0.55rem;
+  --theorem-head-padding-bottom: 0.35rem;
+  --theorem-head-font-size: 0.8rem;
   --theorem-label-color: #C00000;
-  --theorem-label-font-weight: 700;
+  --theorem-body-padding-y: 0.55rem;
+  --theorem-padding-x: 1rem;
+  --theorem-body-font-size: var(--text-theorem, 0.76rem);
 
-  --theorem-name-color: rgba(45, 45, 45, 0.88);
-  --theorem-name-font-weight: 600;
+  --theorem-border-color: rgba(35, 35, 35, 0.68);
+  --theorem-background: rgba(255, 255, 255, 0.72);
+  --theorem-text-color: rgba(35, 35, 35, 0.92);
+  --theorem-head-divider-color: rgba(35, 35, 35, 0.432);
+  --theorem-head-divider-inset: 0.5rem;
+  --theorem-name-color: rgba(35, 35, 35, 0.86);
+  --theorem-comment-color: rgba(35, 35, 55, 0.82);
+  --theorem-line-height: 1.28;
 
-  --theorem-body-margin-top: 10px;
-  --theorem-body-p-margin-top: 0.35rem;
-  --theorem-body-p-margin-bottom: 0.35rem;
-
-  --theorem-comment-margin-top: 22px;
-  --theorem-comment-font-size: 0.86rem;
-  --theorem-comment-line-height: 1.45;
-  --theorem-comment-color: rgba(35, 35, 55, 0.84);
-
-  width: var(--theorem-width);
-  max-width: var(--theorem-max-width);
-  box-sizing: var(--theorem-box-sizing);
-  margin-left: var(--theorem-margin-left);
-  margin-right: var(--theorem-margin-right);
-
-  border: var(--theorem-border-width) solid var(--theorem-border-color);
+  width: 100%;
+  box-sizing: border-box;
+  margin-block: var(--theorem-margin-y);
+  border: none;
   border-radius: var(--theorem-radius);
-  padding: var(--theorem-padding);
-  margin-top: var(--theorem-margin-top);
-  font-size: var(--theorem-font-size);
-  line-height: var(--theorem-line-height);
+  box-shadow: inset 0 0 0 var(--theorem-border-width) var(--theorem-border-color);
   color: var(--theorem-text-color);
   background: var(--theorem-background);
+  overflow: hidden;
 }
 
 .theorem-head {
+  position: relative;
   display: flex;
   align-items: baseline;
-  gap: var(--theorem-head-gap);
-  margin-bottom: var(--theorem-head-margin-bottom);
+  gap: 0.55rem;
+  padding: var(--theorem-head-padding-top) var(--theorem-padding-x) var(--theorem-head-padding-bottom);
+  font-size: var(--theorem-head-font-size);
+  line-height: 1.2;
+}
+
+.theorem-head::after {
+  content: "";
+  position: absolute;
+  left: var(--theorem-head-divider-inset);
+  right: var(--theorem-head-divider-inset);
+  bottom: 0;
+  height: 1px;
+  background: var(--theorem-head-divider-color);
 }
 
 .slidev-layout .theorem-label {
   color: var(--theorem-label-color);
-  font-weight: var(--theorem-label-font-weight);
+  font-weight: var(--theorem-label-font-weight, 700);
 }
 
 .slidev-layout .theorem-name {
   color: var(--theorem-name-color);
-  font-weight: var(--theorem-name-font-weight);
+  font-weight: var(--theorem-name-font-weight, 700);
 }
 
 .theorem-body {
-  margin-top: var(--theorem-body-margin-top);
+  padding: var(--theorem-body-padding-y) var(--theorem-padding-x);
+  font-size: var(--theorem-body-font-size);
+  line-height: var(--theorem-line-height);
+}
+
+.theorem-body > :first-child {
+  margin-top: 0;
+}
+
+.theorem-body > :last-child {
+  margin-bottom: 0;
 }
 
 .theorem-body p {
-  margin-top: var(--theorem-body-p-margin-top);
-  margin-bottom: var(--theorem-body-p-margin-bottom);
+  margin: 0.25rem 0;
 }
 
 .theorem-comment {
-  margin-top: var(--theorem-comment-margin-top);
-  font-size: var(--theorem-comment-font-size);
-  line-height: var(--theorem-comment-line-height);
+  padding: 0 var(--theorem-padding-x) var(--theorem-body-padding-y);
+  margin-top: calc(-0.15 * var(--theorem-body-padding-y));
+  font-size: var(--theorem-comment-font-size, var(--text-small, 0.88rem));
+  line-height: 1.35;
   color: var(--theorem-comment-color);
 }
 
 html.dark .theorem-box {
-  --theorem-border-color: rgba(255, 255, 255, 0.72);
-  --theorem-text-color: rgba(255, 255, 255, 0.92);
+  --theorem-border-color: rgba(255, 255, 255, 0.58);
   --theorem-background: rgba(20, 20, 24, 0.72);
+  --theorem-text-color: rgba(255, 255, 255, 0.92);
+  --theorem-head-divider-color: rgba(255, 255, 255, 0.14);
   --theorem-label-color: #E96158;
   --theorem-name-color: rgba(255, 255, 255, 0.84);
-  --theorem-comment-color: rgba(255, 255, 255, 0.78);
+  --theorem-comment-color: rgba(255, 255, 255, 0.76);
 }

@@ -60,15 +60,15 @@ const props = defineProps({
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 24px;
-    margin-bottom: 1.2rem;
+    height: 18px;
+    margin-bottom: 0.8rem;
     border-bottom: 0.5px solid var(--slidev-theme-light-divider);
 
     p {
       display: block;
       margin: 0;
       padding: 0;
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       font-weight: bold;
     }
 
@@ -84,8 +84,8 @@ const props = defineProps({
 
   .page-number {
     position: absolute;
-    right: 24px;
-    bottom: 16px;
+    right: 14px;
+    bottom: 10px;
     font-size: 0.68rem;
     line-height: 1;
     opacity: 0.55;

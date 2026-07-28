@@ -66,6 +66,14 @@
   --slidev-theme-dark-accent: #40A0FC;
   --slidev-theme-dark-danger: #E96158;
   --slidev-theme-dark-divider: #c2c4c8;
+
+  /* text scale */
+  --text-main: 0.90rem;
+  --text-small: 0.88rem;
+  --text-algorithm: 0.72rem;
+  --text-theorem: 0.76rem;
+  --text-inline-math: 1.0rem;
+  --text-display-math: 0.8rem;
 }
 
 #page-root {
@@ -122,6 +130,8 @@ html.dark {
 .slidev-layout {
   font-family: 'Freesentation', ui-sans-serif, system-ui, sans-serif;
   font-weight: 500;
+  font-size: var(--text-main);
+  line-height: 1.35;
   padding: 1.5rem 2.5rem;
   background-color: #fff;
 
@@ -137,8 +147,12 @@ html.dark {
     font-weight: 800;
   }
 
-  p, li, div, span {
+  :where(p, li, div, span) {
     font-weight: inherit;
+  }
+
+  p {
+    margin: 0.25rem 0;
   }
 
   strong {
@@ -158,6 +172,45 @@ html.dark {
       transform: translateY(-0.5em);
     }
   }
+}
+
+.slidev-layout .katex-display {
+  font-size: var(--text-display-math);
+  margin: 0.8rem 0;
+}
+
+.slidev-layout :where(p, li) .katex:not(.katex-display .katex) {
+  font-size: var(--text-inline-math);
+}
+
+.slidev-layout .algo .katex-display,
+.slidev-layout .theorem-box .katex-display {
+  font-size: inherit;
+  margin: inherit;
+}
+
+
+
+
+/* standard text utilities */
+.small-text {
+  font-size: var(--text-small);
+  line-height: 1.32;
+}
+
+.math-heavy {
+  font-size: var(--text-small);
+  line-height: 1.25;
+}
+
+.main-text {
+  font-size: var(--text-main);
+  line-height: 1.35;
+}
+
+/* theorem box default font size */
+.theorem-box {
+  --theorem-font-size: var(--text-theorem);
 }
 
 strong.danger {

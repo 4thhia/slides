@@ -1,3 +1,6 @@
+node_modules/
+dist/
+
 launch.sh
 misc.txt
 ruins

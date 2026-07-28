@@ -1,0 +1,26 @@
+{
+  "name": "slidev-addon-click-memory",
+  "version": "0.1.0",
+  "description": "Slide navigation controls that remember and restore each slide's click position.",
+  "license": "MIT",
+  "keywords": [
+    "slidev",
+    "slidev-addon",
+    "navigation",
+    "click-memory",
+    "presentation"
+  ],
+  "files": [
+    "custom-nav-controls.vue",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4thhia/slidev-addon-click-memory.git"
+  },
+  "bugs": {
+    "url": "https://github.com/4thhia/slidev-addon-click-memory/issues"
+  },
+  "homepage": "https://github.com/4thhia/slidev-addon-click-memory#readme"
+}
