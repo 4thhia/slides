@@ -1045,6 +1045,138 @@ Substituting these bounds into the optimality inequality yields Theorem 2.
 ---
 layout: default
 headerEnable: true
+headerTitle: Further Background
+pageNumber: true
+---
+
+# Soft Q-Learning
+
+### Value Function and Q Function
+
+<div style="position: absolute; left: 45px; top: 125px; width: 91%; --text-display-math: 1.0rem;">
+
+$$\begin{aligned}\text{Value function}\qquad V^\pi(s)&:=\mathbb{E}^\pi\left[\sum_{t=0}^\infty \gamma^t r(S_t,A_t)\bigg|S_0=s\right],\\[8pt]\text{Q function}\qquad Q^\pi(s,a)&:=\mathbb{E}^\pi\left[\sum_{t=0}^\infty \gamma^t r(S_t,A_t)\bigg|S_0=s,\ A_0=a\right].\end{aligned}$$
+
+</div>
+
+
+
+<div v-click style="position: absolute; left: 45px; top: 300px; width: 91%;">
+
+### Soft Bellman Equation
+
+<div style="--text-display-math: 1.0rem;">
+
+$$Q(s,a)=\mathbb{E}_{S'\sim P(\cdot\mid s,a)}\left[r(s,a)+\gamma V_Q^\beta(S')\right].$$
+
+</div>
+
+<div style="position: absolute; top: 100px; left: 10px; font-size: 1.2rem; --text-inline-math: 1.2rem;">
+
+where $V_Q^\beta(s):=\beta\log\int_{\mathcal A}\exp\left(\frac{Q(s,a)}{\beta}\right)da$.
+
+
+</div>
+
+<div style="position: absolute; top: 150px; left: 10px; font-size: 1.2rem; --text-inline-math: 1.2rem;">
+
+With off-policy data, the Markov operator need not be non-expansive in the data-weighted $L^2$ norm, and convergence of semi-gradient learning with nonlinear function approximation is not guaranteed in general.
+
+</div>
+
+</div>
+
+
+
+
+
+---
+layout: default
+headerEnable: true
+headerTitle: Main Results
+pageNumber: true
+---
+
+# Soft Q-Learning
+
+<div style="font-size: 1.0rem; line-height: 1.24; margin-bottom: 14px; --text-display-math: 1.0rem;">
+
+
+
+Define
+
+$$T_Q(\mu):=\operatorname*{argmin}_{\nu}F_Q(\mu,\nu),\qquad G_Q(t):=F_Q(\nu_t,\nu_t)-F_Q(\nu_t,T_Q(\nu_t)).$$
+
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+
+<div style="min-width: 0; font-size: 0.78rem; line-height: 1.24;">
+
+<div class="theorem-box" style="--theorem-padding: 10px 14px; --theorem-margin-top: 8px; --theorem-font-size: 0.76rem; --theorem-line-height: 1.22; --theorem-head-margin-bottom: 6px; --theorem-body-margin-top: 6px;">
+  <div class="theorem-head">
+    <span class="theorem-label">Theorem 3.</span>
+    <span class="theorem-name">Exponential Convergence of Soft Q-Learning</span>
+  </div>
+
+  <div class="theorem-body">
+
+Assume mixed smoothness with constant $L_p^Q$ and uniform LSI with constant $\rho$.
+
+If
+
+$$\rho\tau>L_p^Q,$$
+
+then $T_Q$ has a unique fixed point $\nu_\star^Q$ and
+
+$$W_2(\nu_t,\nu_\star^Q)\le\frac{\sqrt{2\rho\tau}}{\rho\tau-L_p^Q}\sqrt{G_Q(0)}\,e^{-(\rho\tau-L_p^Q)t}.$$
+
+  </div>
+</div>
+
+<div style="margin-top: 18px;">
+
+The proof has the same structure as policy evaluation: decay of $G_Q(t)$ and contraction of $T_Q$.
+
+</div>
+
+</div>
+
+<div style="min-width: 0; font-size: 0.78rem; line-height: 1.24;">
+
+<div class="theorem-box" style="--theorem-padding: 10px 14px; --theorem-margin-top: 8px; --theorem-font-size: 0.76rem; --theorem-line-height: 1.22; --theorem-head-margin-bottom: 6px; --theorem-body-margin-top: 6px;">
+  <div class="theorem-head">
+    <span class="theorem-label">Theorem 4.</span>
+    <span class="theorem-name">Approximation and Regularization Error</span>
+  </div>
+
+  <div class="theorem-body">
+
+Assume finite $\mathcal S,\mathcal A$ and full support
+
+$$d_{\min}:=\min_{s,a}d_b(s,a)>0.$$
+
+Let $Q_\beta^\star$ be the fixed point of the soft Bellman operator. Then
+
+$$\begin{aligned}\|Q_{\nu_\star^Q}-Q_\beta^\star\|_\infty\le\frac{1}{(1-\gamma)\sqrt{d_{\min}}}\inf_\nu\Bigg\{&\|Q_\nu-T_\beta Q_{\nu_\star^Q}\|_{L^2(d_b)}\\&+\sqrt{\tau\,\mathrm{KL}(\nu\|g_{\lambda,\tau})}\Bigg\}.\end{aligned}$$
+
+  </div>
+</div>
+
+<div style="margin-top: 18px;">
+
+The $L^2(d_b)$ Bellman residual is converted to a sup-norm error using full support and the sup-norm contraction of the soft Bellman operator.
+
+</div>
+
+</div>
+
+</div>
+
+
+---
+layout: default
+headerEnable: true
 headerTitle: Convergence Analysis
 pageNumber: true
 ---
