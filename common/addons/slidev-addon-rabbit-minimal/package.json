@@ -1,0 +1,9 @@
+{
+  "name": "slidev-addon-rabbit-minimal",
+  "version": "3.0.0",
+  "private": true,
+  "description": "An understated per-slide duration timekeeper for Slidev",
+  "license": "MIT",
+  "keywords": ["slidev-addon", "slidev"],
+  "files": ["global-bottom.vue", "LICENSE", "README.md"]
+}
