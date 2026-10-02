@@ -84,6 +84,51 @@ $$\begin{aligned}\text{Bellman Equation}\quad V^\pi(s)=\mathbb{E}_{\substack{A_t
 </div>
 
 
+---
+layout: default
+headerEnable: true
+headerTitle: Background
+---
+
+### Example: Computing the Value Function
+
+<div style="font-size: 0.8em; position: absolute; top: 17%; left: 8% ;">
+
+$$\begin{alignedat}{2}&\text{Definition}&&\text{Bellman Equation}\\ &\quad V^\pi(s)=\mathbb{E}_{\substack{A_t\sim\pi(\cdot\mid S_t)\\ S_{t+1}\sim P(\cdot\mid S_t,A_t)}}\left[\sum_{t=0}^\infty\gamma^tr(S_t,A_t)\bigg|S_0=s\right]\qquad&&\qquad V^\pi(s)=\mathbb{E}_{\substack{A\sim\pi(\cdot\mid s)\\ S'\sim P(\cdot\mid s,A)}}\bigg[r(s,A)+\gamma V^\pi(S')\bigg]\end{alignedat}$$
+
+</div>
+
+
+<div style="position: absolute; top: 10%; right: 4%; font-size: 0.72rem; line-height: 1.15; padding: 10px 10px 0px 10px; border: 1px solid rgba(120,120,120,0.28); border-radius: 12px; background: rgba(255,255,255,0.55); backdrop-filter: blur(6px);">
+
+<div style="font-weight: 800; margin-bottom: 4px;">Grid-world setting</div>
+
+<div><span style="display:inline-block; width: 10px; height: 10px; border: 2px solid rgba(60,150,255,0.95); border-radius: 3px; vertical-align: -1px; margin-right: 6px;"></span>Start state</div>
+
+<div><span style="display:inline-block; width: 10px; height: 10px; border: 2px solid rgba(60,180,100,0.95); border-radius: 3px; vertical-align: -1px; margin-right: 6px;"></span>Goal state</div>
+
+<div style="margin-top: -8px; line-height: 1.15;">
+
+$\pi$: $\mathrm{Uniform}(\mathcal{A})$ <br>
+$P$: $\mathrm{Uniform}(\mathcal{S})$ <br>
+$r \equiv 1,\quad \gamma=1$
+
+<div v-click style="position: absolute; left: 5px; top: 83px; width: 95px; height: 54px; z-index: 10;">
+  <img src="./public/unknown.png" style="width: 100%; height: 100%; display: block;" />
+  <div style="position: absolute; left: 87px; top: 3px; width: 100%; padding-left: 10px; text-align: left; color: black; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.02em; line-height: 1.05;">
+    Unknown<br>
+    in RL
+  </div>
+</div>
+
+</div>
+</div>
+
+
+<DpRlGridCompare />
+
+
+
 
 ---
 layout: default
