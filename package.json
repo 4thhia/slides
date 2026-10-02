@@ -8,8 +8,11 @@
   },
   "devDependencies": {
     "@slidev/cli": "latest",
-    "vue": "latest",
+    "codemirror-theme-vars": "latest",
     "prism-theme-vars": "latest",
-    "codemirror-theme-vars": "latest"
+    "vue": "latest"
+  },
+  "dependencies": {
+    "@fontsource/noto-sans-jp": "^5.3.0"
   }
 }
