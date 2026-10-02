@@ -286,14 +286,14 @@ onUnmounted(() => {
   h2.author {
     font-size: 1.35rem;
     line-height: 1.25;
-    font-weight: 900;
+    font-weight: 700;
     margin-top: 1.2rem;
   }
 
   .cover-extra {
     font-size: 1.05rem;
     line-height: 1.25;
-    font-weight: normal;
+    font-weight: 700;
     margin-top: 0.55rem;
   }
 

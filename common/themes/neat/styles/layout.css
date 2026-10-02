@@ -4,6 +4,9 @@
   font-weight: 300;
   font-style: normal;
   font-display: swap;
+  unicode-range:
+    U+0000-024F,
+    U+1E00-1EFF;
 }
 
 @font-face {
@@ -12,6 +15,9 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  unicode-range:
+    U+0000-024F,
+    U+1E00-1EFF;
 }
 
 @font-face {
@@ -20,6 +26,9 @@
   font-weight: 500;
   font-style: normal;
   font-display: swap;
+  unicode-range:
+    U+0000-024F,
+    U+1E00-1EFF;
 }
 
 @font-face {
@@ -28,6 +37,9 @@
   font-weight: 600;
   font-style: normal;
   font-display: swap;
+  unicode-range:
+    U+0000-024F,
+    U+1E00-1EFF;
 }
 
 @font-face {
@@ -36,6 +48,9 @@
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+  unicode-range:
+    U+0000-024F,
+    U+1E00-1EFF;
 }
 
 @font-face {
@@ -44,6 +59,9 @@
   font-weight: 800;
   font-style: normal;
   font-display: swap;
+  unicode-range:
+    U+0000-024F,
+    U+1E00-1EFF;
 }
 
 @font-face {
@@ -52,6 +70,9 @@
   font-weight: 900;
   font-style: normal;
   font-display: swap;
+  unicode-range:
+    U+0000-024F,
+    U+1E00-1EFF;
 }
 
 :root {
@@ -77,7 +98,7 @@
 }
 
 #page-root {
-  font-family: 'Freesentation', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Freesentation', 'Noto Sans JP', ui-sans-serif, system-ui, sans-serif;
   font-weight: 500;
 }
 
@@ -128,7 +149,7 @@ html.dark {
 }
 
 .slidev-layout {
-  font-family: 'Freesentation', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Freesentation', 'Noto Sans JP', ui-sans-serif, system-ui, sans-serif;
   font-weight: 500;
   font-size: var(--text-main);
   line-height: 1.35;
@@ -136,13 +157,29 @@ html.dark {
   background-color: #fff;
 
   h1, h2, h3, h4 {
-    font-family: 'Freesentation', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Freesentation', 'Noto Sans JP', ui-sans-serif, system-ui, sans-serif;
     font-style: normal;
     font-weight: 900;
   }
 
+  h1 {
+  font-size: 3.4em;
+  }
+
+  h2 {
+    font-size: 3.8em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+  }
+
+  h4 {
+    font-size: 1.15em;
+  }
+
   h5, h6 {
-    font-family: 'Freesentation', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Freesentation', 'Noto Sans JP', ui-sans-serif, system-ui, sans-serif;
     font-style: normal;
     font-weight: 800;
   }

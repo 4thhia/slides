@@ -31,23 +31,23 @@ const props = defineProps({
   position: relative;
 
   h1 {
-    @apply text-2xl;
-    line-height: 1;
+    font-size: 2rem;
+    line-height: 1.1;
   }
 
   h2 {
-    @apply text-xl;
-    line-height: 1;
+    font-size: 1.75rem;
+    line-height: 1.1;
   }
 
   h3 {
-    @apply text-lg;
-    line-height: 1;
+    font-size: 1.4rem;
+    line-height: 1.15;
   }
 
   h4 {
-    @apply text-base;
-    line-height: 1;
+    font-size: 1.15rem;
+    line-height: 1.2;
   }
 
   h5 {
