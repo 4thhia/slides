@@ -113,9 +113,9 @@ $\pi$: $\mathrm{Uniform}(\mathcal{A})$ <br>
 $P$: $\mathrm{Uniform}(\mathcal{S})$ <br>
 $r \equiv 1,\quad \gamma=1$
 
-<div v-click style="position: absolute; left: 5px; top: 83px; width: 95px; height: 54px; z-index: 10;">
-  <img src="./public/unknown.png" style="width: 100%; height: 100%; display: block;" />
-  <div style="position: absolute; left: 87px; top: 3px; width: 100%; padding-left: 10px; text-align: left; color: black; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.02em; line-height: 1.05;">
+<div v-click style="position: absolute; left: 5px; top: 80px; width: 95px; height: 54px; z-index: 10;">
+  <img src="./public/unknown.png" style="position: absolute; left: 5px; top: -8px; width: 100%; height: 100%; display: block;" />
+  <div style="position: absolute; left: 97px; top: -3px; width: 100%; padding-left: 10px; text-align: left; color: black; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.02em; line-height: 1.05;">
     Unknown<br>
     in RL
   </div>
